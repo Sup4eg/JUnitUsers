@@ -3,14 +3,20 @@ import domain.entityEnum.Sex;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-
 import java.util.ArrayList;
 import java.util.List;
+
+/**
+ * @author Sup_4eg
+ * @see User
+ * Test class for User.java
+ */
 public class UserTest {
     private User user;
     private User user1;
     private User user2;
 
+    // Exception users here
     private User userNotAdd;
     private User userNotAdd1;
 
@@ -24,6 +30,9 @@ public class UserTest {
         userNotAdd1 = new User(null, 0 , null);
     }
 
+    /**
+     * Check users with an empty name
+     */
     @Test
     public void newUserEmptyName() {
         for (User user: User.getAllUsers()) {
@@ -33,6 +42,9 @@ public class UserTest {
         }
     }
 
+    /**
+     * Check users with a zero age
+     */
     @Test
     public void newUserAgeZero() {
         for (User user: User.getAllUsers()) {
@@ -43,6 +55,9 @@ public class UserTest {
         }
     }
 
+    /**
+     * Check users with sex = null
+     */
     @Test
     public void newUserSexNoNull() {
         for (User user: User.getAllUsers()) {

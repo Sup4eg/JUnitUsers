@@ -1,8 +1,12 @@
 package domain.entity;
 
 import domain.entityEnum.Sex;
-
 import java.util.*;
+
+/**
+ * @author Sup_4eg
+ * User entity
+ */
 
 public class User {
     private int id;
@@ -11,8 +15,16 @@ public class User {
     private Sex sex;
 
     private static Map<Integer, User> allUsers = new HashMap<>();
+    // count all users
     private static int countId = 0;
 
+    /**
+     * A constructor for class User
+     * @param name name of the person
+     * @param age age of the person
+     * @param sex enum - sex of the person
+     * @see Sex
+     */
     public User(String name, int age, Sex sex) {
         if (name != null && !name.isEmpty() && age > 0 && sex != null) {
             this.name = name;
@@ -27,6 +39,12 @@ public class User {
         }
 
     }
+
+    /**
+     * Check if objects are the same
+     * @param o comparable object
+     * @return true if the same else false
+     */
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -36,6 +54,10 @@ public class User {
                 sex == user.sex;
     }
 
+    /**
+     * Get object hash code
+     * @return hash
+     */
     @Override
     public int hashCode() {
         return Objects.hash(name, age, sex);
@@ -48,6 +70,10 @@ public class User {
                 "sex=%s}", id, name, age, sex);
     }
 
+    /**
+     * Check if user exists in the allUsers map
+     * @return true if exists else false
+     */
     private boolean hasUser(){
         for (User user: allUsers.values()){
             if (user.equals(this) && user.hashCode() == this.hashCode()) {
@@ -83,9 +109,20 @@ public class User {
         return countAge;
     }
 
+    /**
+     * Count all users by sex
+     * @param sex
+     * @return number of users
+     */
     public static int getHowManyUsers(Sex sex) {
         return getAllUsers(sex).size();
     }
+
+    /**
+     * Count age of all users by sex
+     * @param sex
+     * @return number of age
+     */
     public static int getAllAgeUsers(Sex sex) {
         int countAge = 0;
         for (User user: getAllUsers(sex)) {
@@ -97,6 +134,12 @@ public class User {
     public static int getAverageAgeOfAllUsers() {
         return getAllAgeUsers() / getHowManyUsers();
     }
+
+    /**
+     * Get average age of all users by sex
+     * @param sex
+     * @return
+     */
     public static int getAverageAgeOfAllUsers(Sex sex) {
         return getAllAgeUsers(sex) / getHowManyUsers(sex);
     }
