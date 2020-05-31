@@ -21,6 +21,12 @@ public class User {
         this.age = age;
         this.sex = sex;
 
+        if (!hasUser()){
+            countId++;
+            this.id = countId;
+            allUsers.put(id, this);
+        }
+
     }
     @Override
     public boolean equals(Object o) {
