@@ -95,9 +95,51 @@ public class User {
     public static int getAverageAgeOfAllUsers() {
         return getAllAgeUsers() / getHowManyUsers();
     }
-
     public static int getAverageAgeOfAllUsers(Sex sex) {
         return getAllAgeUsers(sex) / getHowManyUsers(sex);
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
+    }
+
+    public Sex getSex() {
+        return sex;
+    }
+
+    public void setSex(Sex sex) {
+        this.sex = sex;
+    }
+
+    public static void setAllUsers(Map<Integer, User> allUsers) {
+        User.allUsers = allUsers;
+    }
+
+    public static int getCountId() {
+        return countId;
+    }
+
+    public static void setCountId(int countId) {
+        User.countId = countId;
+    }
 }
