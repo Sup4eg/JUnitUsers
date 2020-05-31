@@ -11,11 +11,46 @@ public class UserTest {
     private User user1;
     private User user2;
 
+    private User userNotAdd;
+    private User userNotAdd1;
+
     @Before
     public void setUp() throws Exception {
         user = new User("Евгений", 35, Sex.MALE);
         user1 = new User("Марина", 34, Sex.FEMALE);
         user2 = new User("Алина", 7, Sex.FEMALE);
+
+        userNotAdd = new User("", 0, null);
+        userNotAdd1 = new User(null, 0 , null);
+    }
+
+    @Test
+    public void newUserEmptyName() {
+        for (User user: User.getAllUsers()) {
+            if (user.getName() != null && user.getName().isEmpty()) {
+                Assert.fail("Попытка создания пользователя с пустым именем");
+            }
+        }
+    }
+
+    @Test
+    public void newUserAgeZero() {
+        for (User user: User.getAllUsers()) {
+            if (user.getAge() <= 0) {
+                Assert.fail("Попытка создания пользователя с недопустимым" +
+                        "возрастом");
+            }
+        }
+    }
+
+    @Test
+    public void newUserSexNoNull() {
+        for (User user: User.getAllUsers()) {
+            if (user.getSex() == null) {
+                Assert.fail("Попытка создания пользоватеял с " +
+                        "указанием пола = null");
+            }
+        }
     }
 
 
